@@ -25,20 +25,16 @@ RSpec.describe "Ingredients", type: :request do
     end
 
     context "when food does not exist" do
-      let(:todo_id) { 0 }
+      let(:food_id) { 0 }
       
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
-      end
-
-      it 'returns a not found message' do
-        expect(response).to match(/Couldn't find Food/)
       end
     end
   end
 
   describe "GET /foods/:food_id/ingredients/:id" do
-    before { get "get /foods/#{food_id}/ingredients/#{id}" }
+    before { get "/foods/#{food_id}/ingredients/#{id}" }
 
     context "when food ingredient exists" do
       it 'returns status code 200' do
@@ -46,7 +42,7 @@ RSpec.describe "Ingredients", type: :request do
       end
 
       it 'returns the ingredient' do
-        expect(json['id']).to eq(id)
+        expect(json['id']).to eq(food_id)
       end
     end
     
@@ -58,7 +54,7 @@ RSpec.describe "Ingredients", type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Coudn't find Item/)  
+        expect(response.body).to match(/Couldn't find Ingredient/)  
       end
     end
   end
@@ -89,7 +85,7 @@ RSpec.describe "Ingredients", type: :request do
   
   describe "PUT /foods/:food_id/ingredients/:id" do
     let(:valid_attributes) { {name: 'tomato', calorie: 100 } }
-    before { put "/foods/#{food_id}/ingredients/#{id}"}
+    before { put "/foods/#{food_id}/ingredients/#{id}", params: valid_attributes }
     
     context "when item exists" do
       it 'returns status code 204' do

@@ -3,7 +3,7 @@ class IngredientsController < ApplicationController
     before_action :set_food_ingredient, only: [:show, :update, :destroy]
 
     def index
-      json_reponse(@food.ingredients)
+      json_response(@food.ingredients)
     end
 
     def show
@@ -36,6 +36,6 @@ class IngredientsController < ApplicationController
     end
 
     def set_food_ingredient
-      @ingredient = @food.items.find_by!(id: params[:id]) if @food
+      @ingredient = @food.ingredients.find_by!(id: params[:id]) if @food
     end
 end
