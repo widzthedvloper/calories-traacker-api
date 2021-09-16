@@ -5,14 +5,13 @@ def json
 end
 
 RSpec.describe 'Foods API', type: :request do
-  # Initialize test data
+  let(:user) { create(:user) }
   let!(:foods) { create_list(:food, 10) }
   let(:food_id) { foods.first.id }
+  let(:headers) { valid_headers }
 
-  # test suite for Get /foods
   describe 'GET /foods' do
-    # make an http request before for each example
-    before { get '/foods' }
+    before { get '/foods', params: {}, headers: headers }
 
     it 'returns foods' do
       expect(json).not_to be_empty
@@ -24,9 +23,8 @@ RSpec.describe 'Foods API', type: :request do
     end
   end
 
-  # test suite for GET /foods/:id
   describe 'Get /foods/:id' do
-    before { get "/foods/#{food_id}" }
+    before { get "/foods/#{food_id}", params: {}, headers: headers }
 
     context 'when the record exists' do
       it 'returns the food' do
@@ -52,12 +50,11 @@ RSpec.describe 'Foods API', type: :request do
     end
   end
 
-  # test suite for post /foods
   describe 'POST /foods' do
-    let(:valid_attributes) { { name: 'Pasta con tomato', created_by: '1' } }
+    let(:valid_attributes) { { name: 'Pasta con tomato', created_by: user.id.to_s }.to_json }
 
     context 'when the request is valid' do
-      before { post '/foods', params: valid_attributes }
+      before { post '/foods', params: valid_attributes, headers: headers }
 
       it 'creates a food' do
         expect(json['name']).to eq('Pasta con tomato')
@@ -69,7 +66,7 @@ RSpec.describe 'Foods API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/foods', params: { name: 'Burger' } }
+      before { post '/foods', params: invalid_attributes, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -81,12 +78,11 @@ RSpec.describe 'Foods API', type: :request do
     end
   end
 
-  # Test suite for PUT /foods/:id
   describe 'PUT /foods/:id' do
     let(:valid_attributes) { { name: 'Pasta' } }
 
     context 'when the record exist' do
-      before { put "/foods/#{food_id}", params: valid_attributes }
+      before { put "/foods/#{food_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do
         expect(response.body).to be_empty
@@ -98,9 +94,8 @@ RSpec.describe 'Foods API', type: :request do
     end
   end
 
-  # Test suite for DELETE /foods/:id
   describe 'DELETE /foods/:id' do
-    before { delete "/foods/#{food_id}" }
+    before { delete "/foods/#{food_id}", params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
