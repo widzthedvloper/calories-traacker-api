@@ -1,6 +1,9 @@
 # rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
+require '../auth/support/controller_spec_helper'
+require '../auth/support/reqest_spec_helper'
+
 RSpec.describe AuthorizeApiRequest do
   # Create test user
   let(:user) { create(:user) }
