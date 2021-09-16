@@ -43,9 +43,4 @@ RSpec.describe 'Users', type: :request do
     end
   end
 end
-let(:user) { build(:user) }
-let(:headers) { valid_headers.except('Authorization') }
-let(:valid_attributes) do
-  attributes_for(:user, password_confirmation: user.password)
-end
 # rubocop:enable Layout/LineLength
