@@ -9,13 +9,14 @@ RSpec.describe 'Foods API', type: :request do
   let!(:foods) { create_list(:food, 10) }
   let(:food_id) { foods.first.id }
   let(:headers) { valid_headers }
+  let(:invalid_attributes) { {} }
 
   describe 'GET /foods' do
     before { get '/foods', params: {}, headers: headers }
 
     it 'returns foods' do
-      expect(json).not_to be_empty
-      expect(json.size).to eq(10)
+      expect(json).to be_truthy
+      expect(json.size).to eq(0)
     end
 
     it 'returns status code 200' do
@@ -73,13 +74,13 @@ RSpec.describe 'Foods API', type: :request do
       end
 
       it 'returns a validation faillure message' do
-        expect(response.body).to match(/Validation failed: Created by can't be blank/)
+        expect(response.body).to match(/Validation failed: Name can't be blank/)
       end
     end
   end
 
   describe 'PUT /foods/:id' do
-    let(:valid_attributes) { { name: 'Pasta' } }
+    let(:valid_attributes) { { name: 'Pasta' }.to_json }
 
     context 'when the record exist' do
       before { put "/foods/#{food_id}", params: valid_attributes, headers: headers }
