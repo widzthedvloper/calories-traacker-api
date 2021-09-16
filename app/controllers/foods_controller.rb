@@ -3,13 +3,13 @@ class FoodsController < ApplicationController
 
   # GET /foods
   def index
-    @foods = Food.all
+    @foods = current_user.foods
     json_response(@foods)
   end
 
   # POST /foods
   def create
-    @food = Food.create!(food_params)
+    @food = current_user.foods.create!(food_params)
     json_response(@food, :created)
   end
 
@@ -33,7 +33,7 @@ class FoodsController < ApplicationController
   private
 
   def food_params
-    params.permit(:name, :created_by)
+    params.permit(:name)
   end
 
   def set_food
