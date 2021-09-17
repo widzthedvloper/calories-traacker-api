@@ -1,24 +1,47 @@
-# README
+# Adopt Me App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> In this repo i follow along with Brian Holt in the complete intro to react v6(Front End Master). We start working with react form scratch without using the create-react-app command.
 
-Things you may want to cover:
+<p align="center">
+   <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
+   <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
+   <img src="https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white">
+   <img src="https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white">
+</p>
 
-* Ruby version
+## Prerequisites
 
-* System dependencies
+- Ruby 3.0.0
+- Ruby On Rails
+- Code Editor(VScode)
 
-* Configuration
+## Usage
 
-* Database creation
+1. Clone the repository by using the `git clone git@github.com:widzthedvloper/calories-traacker-api.git` command in your terminal
+2. `cd` into the cloned repository
+3. Run `bundle install`
+4. Run `rails s` to run the app in a local server
+5. Open the the folder in the code editer of your choice :)
 
-* Database initialization
+## Contributing
 
-* How to run the test suite
+This project is for educational purposes.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Acknowledgment
 
-* Deployment instructions
+- Austin Kabiru (@akabiru_)
+- Microverse
 
-* ...
+👤 **Widzmarc Jean Nesly Phelle**
+
+- GitHub: [@widzthedvloper](https://github.com/widzthedvloper)
+- Twitter - [@widzthedvloper](https://twitter.com/widzthedvloper)
+- LinkedIn: [@widzthedvloper](https://www.linkedin.com/in/widzmarc-jean-nesly-phelle-252a26129/)
+
+### Show your support
+
+Give a ⭐️ if you like this project!
+
+## License
+
+MIT License
