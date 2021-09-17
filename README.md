@@ -1,6 +1,6 @@
-# Adopt Me App
+# Calories Tracker API
 
-> In this repo i follow along with Brian Holt in the complete intro to react v6(Front End Master). We start working with react form scratch without using the create-react-app command.
+> This is an API for a tracking app
 
 <p align="center">
    <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
